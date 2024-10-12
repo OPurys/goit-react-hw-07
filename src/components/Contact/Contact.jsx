@@ -2,26 +2,26 @@ import css from './Contact.module.css';
 import { HiUser } from 'react-icons/hi';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/contactsOps';
 
-const Contact = ({ id, name, number }) => {
+const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   return (
     <li className={css.item}>
       <div>
         <h2 className={css.subtitle}>
           <HiUser size={20} />
-          {name}
+          {contact.name}
         </h2>
         <p className={css.phone}>
           <FaPhoneAlt size={15} />
-          {number}
+          {contact.number}
         </p>
       </div>
       <button
         className={css.btn}
         type="button"
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => dispatch(deleteContact(contact.id))}
       >
         Delete
       </button>
